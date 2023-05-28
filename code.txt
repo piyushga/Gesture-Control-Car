@@ -1,0 +1,77 @@
+/*CODE TO BE UPLOADED ON TO THE ARDUINO/*
+
+
+#include <SoftwareSerial.h>
+
+char readdata;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(11, OUTPUT); 
+  pinMode(12, OUTPUT); 
+  pinMode(13, OUTPUT); 
+  pinMode(14, OUTPUT);
+  digitalWrite(11,LOW);
+  digitalWrite(12,LOW);
+  digitalWrite(13,LOW);
+  digitalWrite(14,LOW);
+   
+
+}
+
+void loop() {
+
+  while(!Serial.available());
+  if (Serial.available()>0)
+  {
+    readdata = Serial.read();
+    if(readdata == 'A') 
+  {
+    digitalWrite(11, HIGH);
+    digitalWrite (12, LOW);
+    digitalWrite(13,HIGH);
+    digitalWrite(14,LOW);
+    delay(100);
+  }
+ 
+
+  else if(readdata == 'B')
+  {
+    digitalWrite(11, LOW);
+    digitalWrite(12, HIGH);
+    digitalWrite(13, LOW);
+    digitalWrite(14,HIGH);
+    delay(100);
+  }
+
+  else if (readdata == 'C')
+  {
+    digitalWrite (11,HIGH);
+    digitalWrite (12,LOW);
+    digitalWrite (13,LOW);
+    digitalWrite (14,HIGH);
+    delay (100);
+   
+  }
+
+ else if ( readdata == 'D')
+ {
+   digitalWrite (11, LOW);
+   digitalWrite (12, HIGH);
+   digitalWrite (13, HIGH);
+   digitalWrite (14, LOW);
+   delay (100);
+ }
+ else if (readdata == 'E')
+ {
+   digitalWrite (11, LOW);
+   digitalWrite (12, LOW);
+   digitalWrite (13, LOW);
+   digitalWrite (14, LOW);
+   delay (100);
+ }
+
+  
+
+  }
+}
